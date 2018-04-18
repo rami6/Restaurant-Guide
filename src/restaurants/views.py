@@ -1,8 +1,9 @@
+import random
 from django.http import HttpResponse
 from django.shortcuts import render
 
 # Create your views here.
-def home(request):
+def home_old(request):
 	html_var = 'strings'
 	html_ = f"""<!DOCTYPE html>
 	<html lang=en>
@@ -15,4 +16,7 @@ def home(request):
 	</html>
 	"""
 	return HttpResponse(html_)
-	# return render(request, "home.html", {})
+
+def home(request):
+	num = random.randint(0, 100000000)
+	return render(request, "base.html", {"html_var": "context variable", "num": num})
